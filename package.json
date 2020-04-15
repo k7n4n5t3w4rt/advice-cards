@@ -9,7 +9,8 @@
 			"htm",
 			"preact",
 			"preact/hooks",
-			"preact-render-to-string"
+			"preact-render-to-string",
+			"emotion"
 		],
 		"dedupe": []
 	},
@@ -17,17 +18,20 @@
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"build": "cp -r *.html *.txt *.png *.xml css img js site.webmanifest dist/",
 		"snowpack": "snowpack install --clean",
+		"browsersync": "browser-sync start --server --files \"./\"",
 		"start-dev": "npx nodemon --inspect server/index.js",
 		"start": "node server/index.js"
 	},
 	"author": "",
 	"license": "ISC",
 	"devDependencies": {
+		"browser-sync": "^2.26.7",
 		"nodemon": "^2.0.2",
 		"prettier": "1.19.1",
 		"snowpack": "^1.6.0"
 	},
 	"dependencies": {
+		"emotion": "^10.0.27",
 		"finalhandler": "^1.1.2",
 		"htm": "^3.0.3",
 		"preact": "^10.4.0",
