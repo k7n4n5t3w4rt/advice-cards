@@ -22,9 +22,11 @@ const text = css`
 	font-size: 2em;
 `;
 const adviceImage = css`
-	height: 100%;
-	width: 100%;
+	height: 85%;
+	width: 94%;
 	object-fit: cover;
+	outline: 1px solid black;
+	margin: 7.5vh 3vw;
 `;
 const App = (props) => {
 	return html`
