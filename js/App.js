@@ -9,24 +9,33 @@ const imageContainer = css`
 	background-color: gold;
 	min-height: 100vh;
 	min-width: 600vw;
+	display: grid;
+	grid-template: "a a a a a a";
 `;
 const box = css`
 	height: 100vh;
 	width: 100vw;
-	display: inline-block;
-`;
-const text = css`
-	padding: 10px;
-	font-family: sans-serif;
-	text-align: center;
-	font-size: 2em;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 `;
 const adviceImage = css`
 	height: 85%;
 	width: 94%;
 	object-fit: cover;
+	object-position: 50% 0;
 	outline: 1px solid black;
-	margin: 7.5vh 3vw;
+	margin-left: auto;
+	margin-right: auto;
+`;
+const text = css`
+	padding: 10px;
+	font-family: sans-serif;
+	text-align: center;
+	font-size: 1.4em;
+`;
+const sahotaLink = css`
+	text-decoration: none;
 `;
 const App = (props) => {
 	return html`
@@ -68,11 +77,17 @@ const App = (props) => {
 			</div>
 			<div className="${box}">
 				<p className="${text}">
-					"Advice Cards" are made by
+					Made for Michelle.
+				</p>
+				<p className="${text}">
+					"Advice Cards"<br />
+					by<br />
 					<a
+						className="${sahotaLink}"
 						href="https://agilitrix.com/2016/04/improve-decision-making-advice-cards/"
-						>Michael Sahota</a
 					>
+						Michael Sahota
+					</a>
 				</p>
 			</div>
 		</div>
