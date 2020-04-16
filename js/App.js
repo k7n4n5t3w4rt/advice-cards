@@ -7,13 +7,13 @@ const html = htm.bind(h);
 
 const imageContainer = css`
 	background-color: gold;
-	min-height: 100vh;
-	min-width: 600vw;
+	height: 100%;
+	width: 600vw;
 	display: grid;
 	grid-template: "a a a a a a";
 `;
 const box = css`
-	height: 100vh;
+	height: 100%;
 	width: 100vw;
 	display: flex;
 	flex-direction: column;
@@ -22,10 +22,9 @@ const box = css`
 	scroll-snap-stop: normal;
 `;
 const adviceImage = css`
-	height: 85%;
-	width: 94%;
-	object-fit: cover;
-	object-position: 50% 0;
+	@media (max-aspect-ratio: 29/50) {
+		width: 94%;
+	}
 	outline: 1px solid black;
 	margin-left: auto;
 	margin-right: auto;
