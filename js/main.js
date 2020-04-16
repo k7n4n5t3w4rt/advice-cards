@@ -4,9 +4,9 @@ import htm from "../web_modules/htm.js";
 import screenfull from "../web_modules/screenfull.js";
 const html = htm.bind(h);
 
-if (screenfull.isEnabled) {
+document.getElementById("main-container").addEventListener("mousedown", () => {
 	screenfull.request();
-}
+});
 
 hydrate(
 	html`
