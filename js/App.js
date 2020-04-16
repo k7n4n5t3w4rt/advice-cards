@@ -18,6 +18,9 @@ const box = css`
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	scroll-margin: 10px;
+	scroll-snap-align: start;
+	scroll-snap-stop: normal;
 `;
 const adviceImage = css`
 	height: 85%;
