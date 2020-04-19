@@ -13,11 +13,7 @@ hydrate(
 
 // Doesn't work on iPhone ~ https://caniuse.com/#feat=fullscreen
 // Plus we only want fullscreen on touch devices
-if (
-	Modernizr.fullscreen &&
-	Modernizr.hasEvent("touchend") &&
-	screenfull.isEnabled
-) {
+if (Modernizr.hasEvent("touchend") && screenfull.isEnabled) {
 	document.getElementById("main-container").addEventListener(
 		"touchend",
 		() => {
