@@ -1,6 +1,4 @@
-function createCommonjsModule(fn, module) {
-	return module = { exports: {} }, fn(module, module.exports), module.exports;
-}
+import { c as createCommonjsModule } from './common/_commonjsHelpers-6a48b99e.js';
 
 var screenfull = createCommonjsModule(function (module) {
 /*!
