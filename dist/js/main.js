@@ -1,23 +1,40 @@
-// import { React, ReactDOM } from 'https://unpkg.com/es-react@16.12.0';
-import { React, ReactDOM } from './vendor/es-react/index.js';
-import htm from 'https://unpkg.com/htm?module'
-const html = htm.bind(React.createElement)
+import { h, hydrate } from "../web_modules/preact.js";
+import App from "./App.js";
+import htm from "../web_modules/htm.js";
+import screenfull from "../web_modules/screenfull.js";
+const html = htm.bind(h);
 
-const Counter = props => {
-  const [count, setCount] = React.useState(parseInt(props.count))
-  return html`
-    <div>
-      <h1>${count}</h1>
-      <button onClick=${e => setCount(count - 1)}>Decrement</button>
-      <button onClick=${e => setCount(count + 1)}>Increment</button>
-    </div>
-  `
+hydrate(
+	html`
+		<${App} />
+	`,
+	document.getElementById("main-container")
+);
+
+// Doesn't work on iPhone ~ https://caniuse.com/#feat=fullscreen
+// Plus we only want fullscreen on touch devices
+if (Modernizr.hasEvent("touchend") && screenfull.isEnabled) {
+	document.getElementById("main-container").addEventListener(
+		"touchend",
+		() => {
+			screenfull.request();
+		},
+		{ once: true }
+	);
 }
 
-ReactDOM.render(
-  html`
-    <h1>Look Ma! No script tags, no build step</h1>
-    <${Counter} count=0 />
-  `,
-  document.body
-)
+// Fix for iOS not handling viewport height the same way as everyone else
+if (
+	typeof window !== "undefined" &&
+	!!navigator.platform &&
+	/iPad|iPhone|iPod/.test(navigator.platform)
+) {
+	// it's probably an iPhone
+	window.onresize = function() {
+		document.body.style.height = window.innerHeight + "px";
+		document.body.parentNode.style.height = window.innerHeight + "px";
+		document.getElementById("main-container").style.height =
+			window.innerHeight + "px";
+	};
+	window.onresize(); // called to initially set the height.
+}

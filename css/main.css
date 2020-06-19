@@ -270,7 +270,9 @@ textarea {
 html,
 body {
 	height: 100%;
+	width: 100%;
 	overflow: hidden;
+	box-sizing: border-box;
 }
 
 #main-container {
@@ -278,4 +280,5 @@ body {
 	height: 100%;
 	overflow-y: scroll;
 	scroll-snap-type: x mandatory;
+	box-sizing: border-box;
 }

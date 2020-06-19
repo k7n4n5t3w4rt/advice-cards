@@ -1,23 +1,132 @@
-import { React, ReactDOM } from './vendor/es-react/index.js';
-import htm from './vendor/htm.module.js'
-const html = htm.bind(React.createElement)
+import { h, render } from "../web_modules/preact.js";
+import { useState } from "../web_modules/preact/hooks.js";
+import { createStyles } from "../web_modules/simplestyle-js.js";
+import Counter from "./Counter.js";
+import htm from "../web_modules/htm.js";
+const html = htm.bind(h);
 
+const [styles] = createStyles({
+  imageContainer: {
+    backgroundColor: "gold",
+    height: "100vh",
+    width: "600%",
+    display: "grid",
+    gridTemplate: "'a a a a a a'",
+    boxSizing: "border-box",
+  },
+  box: {
+    height: "100vh",
+    width: "100vw",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    scrollSnapAlign: "start",
+    scrollSnapStop: "normal",
+    fontFamily: "courier",
+    fontSize: "1.2em",
+    color: "#333",
+    boxSizing: "border-box",
+  },
+  adviceImage: {
+    "@media (max-aspect-ratio: 29/50)": {
+      width: "94%",
+    },
+    marginLeft: "auto",
+    marginRight: "auto",
+    maxHeight: "90%",
+    boxSizing: "border-box",
+    border: "1px solid black",
+  },
+  heading: {
+    fontWeight: "normal",
+    textAlign: "center",
+    fontSize: "1.4em",
+    padding: "0",
+    margin: "0",
+  },
+  text: {
+    marginTop: "32px",
+    textAlign: "center",
+    padding: "0",
+  },
+  instructions: {
+    marginTop: "64px",
+    textAlign: "center",
+    fontSize: "1em",
+    padding: "0",
+  },
+  sahotaLink: {
+    textDecoration: "none",
+    color: "#555",
+  },
+  pointerImage: {
+    width: "30%",
+    maxWidth: "100px",
+    boxSizing: "border-box",
+  },
+});
 
-const Counter = props => {
-  const [count, setCount] = React.useState(parseInt(props.count))
+const App = props => {
   return html`
-    <div>
-      <h1>${count}</h1>
-      <button onClick=${e => setCount(count - 1)}>Decrement</button>
-      <button onClick=${e => setCount(count + 1)}>Increment</button>
+    <div className=${styles.imageContainer}>
+      <div className="${styles.box}">
+        <h1 className="${styles.heading}">
+          “Advice Cards”
+        </h1>
+        <p className="${styles.text}">
+          by ${""}<br />
+          <a
+            className="${styles.sahotaLink}"
+            href="https://agilitrix.com/2016/04/improve-decision-making-advice-cards/"
+          >
+            Michael Sahota
+          </a>
+        </p>
+        <p className="${styles.instructions}">
+          <img
+            className="${styles.pointerImage}"
+            src="./img/vector-hand-pointing-27.png"
+            title="Scroll or swipe right"
+          />
+        </p>
+      </div>
+      <div className="${styles.box}">
+        <img
+          className="${styles.adviceImage}"
+          src="./img/_please_let_me_know.jpg"
+          title="Let me know"
+        />
+      </div>
+      <div className="${styles.box}">
+        <img
+          className="${styles.adviceImage}"
+          src="./img/_i_advise.jpg"
+          title="I advise"
+        />
+      </div>
+      <div className="${styles.box}">
+        <img
+          className="${styles.adviceImage}"
+          src="./img/_we_decide_together.jpg"
+          title="We decide together"
+        />
+      </div>
+      <div className="${styles.box}">
+        <img
+          className="${styles.adviceImage}"
+          src="./img/_i_decide_after_seeking_advice.jpg"
+          title="I decide with advice"
+        />
+      </div>
+      <div className="${styles.box}">
+        <img
+          className="${styles.adviceImage}"
+          src="./img/_i_decide.jpg"
+          title="I decide"
+        />
+      </div>
     </div>
-  `
-}
+  `;
+};
 
-ReactDOM.render(
-  html`
-    <h1>Look Ma! No script tags, no build step</h1>
-    <${Counter} count=0 />
-  `,
-  document.body
-)
+export default App;

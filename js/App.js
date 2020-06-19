@@ -8,13 +8,14 @@ const html = htm.bind(h);
 const [styles] = createStyles({
   imageContainer: {
     backgroundColor: "gold",
-    height: "100%",
-    width: "600vw",
+    height: "100vh",
+    width: "600%",
     display: "grid",
     gridTemplate: "'a a a a a a'",
+    boxSizing: "border-box",
   },
   box: {
-    height: "100%",
+    height: "100vh",
     width: "100vw",
     display: "flex",
     flexDirection: "column",
@@ -24,14 +25,17 @@ const [styles] = createStyles({
     fontFamily: "courier",
     fontSize: "1.2em",
     color: "#333",
+    boxSizing: "border-box",
   },
   adviceImage: {
     "@media (max-aspect-ratio: 29/50)": {
       width: "94%",
     },
-    outline: "1px solid black",
     marginLeft: "auto",
     marginRight: "auto",
+    maxHeight: "90%",
+    boxSizing: "border-box",
+    border: "1px solid black",
   },
   heading: {
     fontWeight: "normal",
@@ -57,6 +61,8 @@ const [styles] = createStyles({
   },
   pointerImage: {
     width: "30%",
+    maxWidth: "100px",
+    boxSizing: "border-box",
   },
 });
 
@@ -76,9 +82,6 @@ const App = props => {
             Michael Sahota
           </a>
         </p>
-        <p className="${styles.text}">
-          Made for Michelle
-        </p>
         <p className="${styles.instructions}">
           <img
             className="${styles.pointerImage}"
@@ -90,35 +93,35 @@ const App = props => {
       <div className="${styles.box}">
         <img
           className="${styles.adviceImage}"
-          src="./img/001_letmeknow.png"
+          src="./img/_please_let_me_know.jpg"
           title="Let me know"
         />
       </div>
       <div className="${styles.box}">
         <img
           className="${styles.adviceImage}"
-          src="./img/002_iadvise.png"
+          src="./img/_i_advise.jpg"
           title="I advise"
         />
       </div>
       <div className="${styles.box}">
         <img
           className="${styles.adviceImage}"
-          src="./img/003_decidetogether.png"
+          src="./img/_we_decide_together.jpg"
           title="We decide together"
         />
       </div>
       <div className="${styles.box}">
         <img
           className="${styles.adviceImage}"
-          src="./img/004_decidewithadvice.png"
+          src="./img/_i_decide_after_seeking_advice.jpg"
           title="I decide with advice"
         />
       </div>
       <div className="${styles.box}">
         <img
           className="${styles.adviceImage}"
-          src="./img/005_idecide.png"
+          src="./img/_i_decide.jpg"
           title="I decide"
         />
       </div>
